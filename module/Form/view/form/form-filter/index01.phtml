@@ -1,0 +1,51 @@
+<?php 
+	$elementEmail    = $myFormLogin->get("my-email");
+	$elementPassword = $myFormLogin->get("my-password");
+	$elementCheckbox = $myFormLogin->get("my-checkbox");
+	$btnSubmit       = $this->formButton($myFormLogin->get("my-button-submit"));
+	$btnReset        = $this->formButton($myFormLogin->get("my-button-reset"));
+
+	$checkbox   = $this->formLabel($elementCheckbox,$this->formInput($myFormLogin->get("my-checkbox")),"append");
+
+	$frame_form = array(
+		array(
+			"label" => $this->formLabel($elementEmail),
+			"input" => $this->formInput($elementEmail),
+			"class" => "col-sm-9",
+		),
+		array(
+			"label" => $this->formLabel($elementPassword),
+			"input" => $this->formInput($elementPassword),
+			"class" => "col-sm-9",
+		),
+		array(
+			"label" => null,
+			"input" => '<div class="checkbox">'.$checkbox.'</div>',
+			"class" => "col-sm-offset-3 col-sm-9",
+		),
+		array(
+			"label" => null,
+			"input" => $btnSubmit ." ". $btnReset,
+			"class" => "col-sm-offset-3 col-sm-9",
+		),
+	);
+?>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-lock"></span>Login
+			</div>
+			<div class="panel-body">
+				<?php 
+					echo $this->form()->openTag($myFormLogin);
+						echo $this->partialLoop("form-group.phtml",$frame_form);
+					echo $this->form()->closeTag();
+				?>			
+			</div>
+			<div class="panel-footer">
+				Not Registred? <a href="http://www.jquery2dotnet.com">Register here</a>
+			</div>
+		</div>
+	</div>
+</div>

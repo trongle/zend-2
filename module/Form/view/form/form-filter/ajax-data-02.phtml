@@ -1,0 +1,12 @@
+<?php 
+$xhtml = "<h3 style='color:red;font-weight:bold'>Access Denied</h3>";
+	if($isXmlHttpRequest){
+		$xhtml = "<option value='0'>Hãy chọn khóa học</option>";
+
+		foreach($data as $key => $val){
+			$xhtml .= sprintf("<option value = '%s' >%s</option>",$val['id'],$val['name']); 
+		}
+	}
+
+echo $xhtml;
+?>

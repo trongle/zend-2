@@ -1,0 +1,15 @@
+<?php 
+
+$url = $this->url("permissionRoute/default",array(
+	"controller" => "authenticate",
+	"action"     => "logout"
+));
+?>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Xin chào <?php echo $this->identity()->name ?> </h3>
+  </div>
+  <div class="panel-body">
+  	Click vào <a href="<?php echo $url ?>">đây</a> để Logout !
+  </div>
+</div>

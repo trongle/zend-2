@@ -1,0 +1,22 @@
+<?php 
+// echo "<h3 style='color:red;font-weight:bold'>".__FILE__."</h3>";
+// echo "<pre style='font-weight:bold'>";
+// print_r($this->successMess);
+// echo "</pre>";
+
+
+//UL LU
+//echo $this->flashMessenger()->render("success");
+
+//UL LU thêm class
+//echo $this->flashMessenger()->render("success",array("abc"));
+
+
+//advance
+echo $this->flashMessenger()->setMessageOpenFormat("<div class='abc'><h4>")
+							->setMessageSeparatorString("</h4><h4>")
+							->setMessageCloseString("</h4></div>")
+							->render("success");
+
+//set on module.config.php
+echo $this->flashMessenger()->render("success");

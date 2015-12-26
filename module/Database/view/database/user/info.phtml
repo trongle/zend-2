@@ -1,0 +1,28 @@
+<?php 
+
+	if($this->item){
+		$avatar = (empty($this->item->avatar))? FILES_URL."user/no_avatar.png" : FILES_URL."user/".$this->item->avatar;
+		$linkBack = $this->url("manageUser");
+	}
+?>
+
+
+
+<div class="my-content">
+	<div class="manager-user">
+		<h3>User Info</h3>
+		<div class="media">
+			<a class="pull-left" href="#"> <img class="media-object"
+				src="<?php echo $avatar ?>">
+			</a>
+			<div class="media-body">
+				<h4 class="media-heading"><?php echo $this->item->name ?></h4>
+				<p><?php echo $this->item->email ?></p>
+				<p><?php echo $this->item->fullname ?></p>
+			</div>
+		</div>
+		<p class="warning-delete">
+			Click vào <a href="<?php echo $linkBack ?>">đây</a> để quay lại trang danh sách thành viên
+		</p>
+	</div>
+</div>

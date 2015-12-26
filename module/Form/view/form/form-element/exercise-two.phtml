@@ -1,0 +1,48 @@
+<?php 
+	$elementCHN = $myFormRegister->get("card-holder-name");
+	$elementCN  = $myFormRegister->get("card-number");
+	$elementCVV = $myFormRegister->get("cvv");
+	$elementEM  = $myFormRegister->get("expiry-month");
+	$elementEY  = $myFormRegister->get("expiry-year");
+	$btnPaynow  = $this->formButton($myFormRegister->get("pay-now"));
+
+
+	$frame_form = array(
+		array(
+			"label" => $this->formLabel($elementCHN),
+			"input" => $this->formInput($elementCHN),
+			"class" => "col-sm-9",
+		),
+		array(
+			"label" => $this->formLabel($elementCN),
+			"input" => $this->formInput($elementCN),
+			"class" => "col-sm-9",
+		),
+		array(
+			"label" => $this->formLabel($elementCVV),
+			"input" => $this->formInput($elementCVV),
+			"class" => "col-sm-3",
+		),
+		array(
+			"label" => $this->formLabel($elementEM),
+			"input" => '<div class="row"><div class="col-xs-3">'.$this->formSelect($elementEM).'</div>'.'<div class="col-xs-3">'.$this->formSelect($elementEY).'</div></div>',
+			"class" => "col-sm-9",
+		),
+		array(
+			"label" => null,
+			"input" => $btnPaynow,
+			"class" => "col-sm-offset-3 col-sm-9",
+		),
+	
+	);
+
+
+
+	echo $this->form()->openTag($myFormRegister);
+		echo $this->partialLoop("form-group.phtml",$frame_form);
+	echo $this->form()->closeTag();
+	echo "<hr />";
+		
+?>
+
+

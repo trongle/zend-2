@@ -1,0 +1,28 @@
+<?php 
+	$url = $this->url("permissionRoute/default",array(
+		"controller"=> "captcha",
+		"action"    => "refresh-captcha"
+	));
+
+?>
+<form action="#" method="POST">
+    <div id="refresh-captcha">
+		<img src="<?php echo $this->imgUrl ?>">
+		<input type="hidden" name="captcha_id" id="captcha_id" value="<?php echo $this->captcha_id ?>">
+	</div>
+	<br /><br /><a href="#" id ="refresh">Refresh</a>
+	<br /><br /><input type="text" name="captcha_user" value="">
+	<br /><br /><button type="submit" name="ok">Submit</button>
+</form>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#refresh").click(function(){
+			var dataSend = {"captchaOldId" : $("#captcha_id").val()}
+			$.get("<?php echo $url ?>",dataSend,function(data){
+					$("#refresh-captcha").html(data);
+				})
+		})
+	})	
+
+</script>

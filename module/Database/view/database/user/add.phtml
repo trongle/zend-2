@@ -1,0 +1,49 @@
+<?php 
+$form = $this->form;
+$form->prepare();
+
+$fame = array(
+	array(
+		"label" => $this->formLabel($form->get("name")),
+		"input" => $this->formElement($form->get("name")),
+		"error" => $this->formElementError($form->get("name")),
+		"class" => "col-sm-8" 
+	),
+	array(
+		"label" => $this->formLabel($form->get("email")),
+		"input" => $this->formElement($form->get("email")),
+		"error" => $this->formElementError($form->get("email")),
+		"class" => "col-sm-8" 
+	),
+	array(
+		"label" => $this->formLabel($form->get("fullname")),
+		"input" => $this->formElement($form->get("fullname")),
+		"error" => $this->formElementError($form->get("fullname")),
+		"class" => "col-sm-8" 
+	),
+	array(
+		"label" => "",
+		"error" => "",
+		"input" => $this->formButton($form->get("submit"))." ".$this->formButton($form->get("cancel")),
+		"class" => "col-sm-offset-3 col-sm-8" 
+	)
+) 
+?>
+
+<div class="manager-user">
+	<h3>Add user</h3>
+	<?php 
+		echo $this->form()->openTag($form);
+			echo $this->partialLoop("find-form",$fame);
+		echo $this->form()->closeTag();
+	?>
+</div>
+<script type="text/javascript">
+	function resetForm(){
+		window.location = "<?php echo  $this->url('manageUser') ?>"
+	}
+</script>
+
+
+
+

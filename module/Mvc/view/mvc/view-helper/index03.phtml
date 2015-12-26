@@ -1,0 +1,23 @@
+<?php echo "<h3 style='color:red;font-weight:bold'>".__FILE__."</h3>";?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+</head>
+<body>
+	<?php 
+		$arrNumber = array(1,2,3,4,5);
+		// echo $this->cycle($arrNumber)->next(); 
+		// echo $this->cycle($arrNumber)->next(); 
+		// echo $this->cycle($arrNumber)->next(); 
+		echo "<pre style='font-weight:bold'>";
+		print_r($this->course);
+		echo "</pre>";
+		foreach($this->course as $val){
+			$class = $this->cycle(array("green","pink"))->next();
+			echo "<li style='background-color:".$class."'>".$val['name']."</li>";
+		}
+	?>
+</body>
+</html>

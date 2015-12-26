@@ -1,0 +1,8 @@
+<?php 
+	$xml = "<h3 style='color:red;font-weight:bold'>Access is denied</h3>";
+	if($this->isXmlHttpRequest){
+		$xml = sprintf('<img src="%s"><input type="hidden" id="captcha_id" name="captcha_id" value="%s">',
+			   $this->imgUrl,$this->captchaID);
+	}
+	echo $xml;
+?>

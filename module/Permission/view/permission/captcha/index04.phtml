@@ -1,0 +1,15 @@
+<?php 
+	$form = $this->myForm;
+	$form->prepare();
+
+	echo $this->form()->openTag($form);
+
+		echo $this->formRow($form->get('my-captcha')); //Error + img + my-captcha[id] + my-captcha[input]
+		// echo $this->formLabel($form->get('my-captcha'))."<br />";
+		// echo $this->formCaptcha($form->get('my-captcha'))."<br />"; //img + my-captcha[id] + my-captcha[input]
+		//echo $this->captchaimage($form->get('my-captcha'))."<br />"; //img + my-captcha[id] + my-captcha[input]
+		//echo $this->formcaptchaimage($form->get('my-captcha'))."<br />"; //img + my-captcha[id] + my-captcha[input]
+		echo $this->formSubmit($form->get("my-submit"));
+
+	echo $this->form()->closeTag();
+?>

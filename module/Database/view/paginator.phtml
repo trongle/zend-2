@@ -1,0 +1,55 @@
+<?php  
+// echo "<h3 style='color:red;font-weight:bold'>first : ".$this->first."</h3>";
+// echo "<h3 style='color:red;font-weight:bold'>last : ".$this->last."</h3>";
+// echo "<h3 style='color:red;font-weight:bold'>current : ".$this->current."</h3>";
+// echo "<h3 style='color:red;font-weight:bold'>next : ".$this->next."</h3>";
+// echo "<h3 style='color:red;font-weight:bold'>previous : ".$this->previous."</h3>";
+
+//nếu chỉ có một trang thi k hiện pagination
+if($this->pageCount == 1) return "";
+
+
+$linkFirst    = $this->realURL.$this->first;
+$linkLast     = $this->realURL.$this->last;
+$linkNext     = $this->realURL.$this->next;
+$linkPrevious = $this->realURL.$this->previous;
+
+$xhtmlFirst    = '<li class = "disabled"><a href="#" ><span >&laquo;</span></a></li>';
+$xhtmlPrevious = '<li class = "disabled"><a href="#" >Previous</a></li>';
+if($this->current != 1){
+  $xhtmlFirst    = sprintf('<li><a href="%s" ><span >&laquo;</span></a></li>',$linkFirst);
+  $xhtmlPrevious = sprintf('<li><a href="%s" >Previous</a></li>',$linkPrevious);
+}
+
+$xhtmlLast = '<li class = "disabled"><a href="#" ><span >&raquo;</span></a></li>';
+$xhtmlNext = '<li class = "disabled"><a href="#" >Next</a></li>';
+if($this->current != $this->last){
+  $xhtmlLast = sprintf('<li><a href="%s" ><span >&raquo;</span></a></li>',$linkLast);
+  $xhtmlNext = sprintf('<li><a href="%s" >Next</a></li>',$linkNext);
+}
+
+//pageRange
+// echo "<pre style='font-weight:bold'>";
+// print_r($this->pagesInRange);
+// echo "</pre>";
+$listPage = "";
+foreach($this->pagesInRange as $key){
+  $linkPage = $this->realURL.$key;
+   if($this->current == $key){
+     $listPage .= sprintf('<li class="active"><a href="%s">%s</a></li>',$linkPage,$key);
+  }else{
+     $listPage .= sprintf('<li><a href="%s">%s</a></li>',$linkPage,$key);
+  }
+}
+
+?>
+
+<nav>
+  <ul class="pagination">
+    <?php 
+      echo $xhtmlFirst.$xhtmlPrevious;
+      echo $listPage; 
+      echo $xhtmlNext.$xhtmlLast;
+    ?>
+  </ul>
+</nav>

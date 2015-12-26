@@ -1,0 +1,34 @@
+<?php echo  $this->doctype() ?>
+<html>
+
+<head>
+
+	<?php 
+		//title
+		echo $this->headTitle()->setSeparator(" - ")->append("Zend 2 ") ;
+		//meta
+		echo $this->headMeta()->appendName("viewport","width=device-width, initial-scale=1")
+		                      ->appendName("description","Trongle no1")
+							  ->appendHttpEquiv("Content-Type","text/html; charset=utf-8")
+		                      ->appendHttpEquiv("Content-Language","vi")
+		                      ->setCharset("utf-8");
+		//css
+		echo $this->headLink()->appendStylesheet(PUBLIC_URL."css/bootstrap.min.css")
+							  ->appendStylesheet(PUBLIC_URL."css/style.css");
+		//js
+		echo $this->headScript()->appendFile(PUBLIC_URL."js/jquery.min.js")
+								->appendFile(PUBLIC_URL."js/jquery.form.js")
+		                        ->appendFile(PUBLIC_URL."js/bootstrap.min.js");			
+	?>
+	
+	
+</head>
+<body>
+	
+	<div class="container">
+		<?php echo $this->content ?>
+	</div>
+	<?php echo $this->headerV ?>
+	<?php echo $this->inlineScript() ?>
+</body>
+</html>

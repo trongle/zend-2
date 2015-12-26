@@ -1,0 +1,16 @@
+<?php 
+	echo "<h3 style='color:red;font-weight:bold'>".__FILE__."</h3>"; 
+	$urlPHP = $this->url("regexType",array(
+					"name" =>"zend-2",
+					"id"   => "23",
+					"extension" => "html"
+		));
+	$urlLogin = $this->url("literalType");
+	$urlEdit = $this->url('treeRouter/manager_user',array("action"=>"edit","id"=>"3"))
+?>
+
+<ul>
+	<li><a href="<?php echo $urlPHP ?>">PHP</a></li>
+	<li><a href="<?php echo $urlLogin ?>">Login</a></li>
+	<li><a href="<?php echo $urlEdit ?>">Edit User</a></li>
+</ul>

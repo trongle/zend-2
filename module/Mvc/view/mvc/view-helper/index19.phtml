@@ -1,0 +1,43 @@
+<?php 
+
+echo "<h3 style='color:red;font-weight:bold'>CurrencyFormat</h3>";
+//C1
+$currency = 112343532.53535;
+echo $this->currencyFormat($currency,"VND",false,"vi-VI");
+
+
+//C2
+$this->plugin("currencyformat")->setCurrencyCode("USD")
+							   ->setLocale("hy-HY");
+echo "<br />". $this->currencyFormat($currency);
+?>
+
+
+
+<?php 
+
+echo "<h3 style='color:red;font-weight:bold'>dateFormat</h3>";
+//C1
+echo $this->dateFormat(
+	new dateTime(),
+	intlDateFormatter::SHORT, //NONE ,SHORT, LONG ,MEDIUM
+	intlDateFormatter::SHORT, //NONE ,SHORT, LONG ,MEDIUM
+	"vi-VI");
+
+
+//C2
+$this->plugin("dateformat")->setTimezone("Asia/Ho_Chi_Minh")
+						   ->setLocale("vi-VI");
+echo "<br />".$this->dateFormat(new dateTime(),
+								intlDateFormatter::SHORT, //NONE ,SHORT, LONG ,MEDIUM
+								intlDateFormatter::SHORT
+								) //NONE ,SHORT, LONG ,MEDIUM);
+?>
+
+<?php 
+
+echo "<h3 style='color:red;font-weight:bold'>numberFormat</h3>";
+//C1
+echo $this->numberFormat(123434.34535,NumberFormatter::DECIMAL,NumberFormatter::TYPE_DOUBLE,"vi-VI");
+
+?>

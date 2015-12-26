@@ -1,0 +1,42 @@
+<?php 
+
+//basic
+$this->placeholder("fooOne")->set("Chỉ còn lại Tình Yêu - Bùi Anh Tuấn")
+							->setPrefix("--")
+							->setPostfix("++");
+
+
+
+
+
+//Array
+$song = array(
+	"Chỉ Còn lại tình yêu",
+	"Cần lắm",
+	"Buông đôi tay nhau ra"
+);
+
+$this->placeholder("fooTwo")->exchangeArray($song);
+
+$this->placeholder("fooTwo")->setPrefix("--")
+							->setPostfix("++")
+							->setSeparator("/");
+
+//UL LI
+$this->placeholder("fooTwo")->setPrefix("<ul><li>")
+							->setPostfix("</ul></li>")
+							->setSeparator("</li><li>");
+
+
+
+
+
+
+//Advandce
+$this->placeholder("fooThree")->captureStart();
+?>
+<p>Cần một người dìu bước cô liêu</p>
+<?php 
+$this->placeholder("fooThree")->captureEnd();
+echo $this->placeholder("fooThree");
+?>

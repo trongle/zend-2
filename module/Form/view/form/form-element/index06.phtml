@@ -1,0 +1,36 @@
+<?php 
+
+// echo "<pre style='font-weight:bold'>";
+// print_r($this->form);
+// echo "</pre>";
+
+//create form
+
+
+
+	echo $this->form()->openTag($this->form);
+//formRow: FormLabel +FormInput + FormError
+//FormText: FormInput 
+//formElement: formText form Password FormX 
+//formInput : <input type="*"
+//formLabel : <label>
+
+
+
+//                     Zend2_api:Zend\View\Helper\Form
+
+
+
+echo $this->formRow($this->form->get("my-textbox"),"append")."<br />";
+
+
+
+
+
+echo $this->myFormRow($this->form->get("my-textbox"))."<br />";
+echo $this->myFormRow($this->form->get("my-number"))."<br />";
+echo $this->myFormRow($this->form->get("my-submit"))."<br />";
+	
+echo $this->form()->closeTag($this->form);
+
+?>

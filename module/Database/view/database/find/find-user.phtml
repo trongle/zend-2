@@ -1,0 +1,68 @@
+<?php 
+	$form          = $this->myForm;
+	$form->prepare();
+	$elementEmail  = $form->get("my-email");
+	$elementSubmit = $form->get("my-submit");
+	$elementReset  = $form->get("my-reset");
+
+
+	$frame_form = array(
+		array(
+			"label" => $this->formLabel($elementEmail),
+			"input" => $this->formInput($elementEmail),
+			"class" => "col-sm-9",
+			"error" => $this->formElementError($elementEmail) 
+ 		),
+
+ 		array(
+			"label" => "",
+			"input" => $this->formButton($elementSubmit)." ".$this->formButton($elementReset),
+			"class" => "col-sm-offset-3 col-sm-9",
+ 		),
+	);
+
+
+	$rowXhtml = "";
+	$xhtml = "";
+	if(!empty($this->items)){
+		foreach($this->items as $item){
+			$rowXhtml .= sprintf('<tr><td>%s</td><td>%s</td></tr>',$item->id,$item->name);
+		}
+		$xhtml = '<table class = "table table-hover table-bordered">
+					<tbody><tr><th>ID</th><th>Username</th></tr>
+						   '.$rowXhtml.'
+					</tbody>
+				</table>';
+	}
+?>
+
+
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-lock"></span>Login
+			</div>
+			<div class="panel-body">
+				<?php 
+					echo $this->form()->openTag($form);
+					 	echo $this->partialLoop("find-form.phtml",$frame_form);
+					echo $this->form()->closeTag();
+				?>		
+				<?php 
+					echo $xhtml;
+				?>	
+			</div>
+			<div class="panel-footer">
+				Not Registred? <a href="http://www.jquery2dotnet.com">Register here</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function resetForm(){
+		window.location = "<?php $this->url(null,array('controller'=>'Find','action' => 'findUser')) ?>"
+	}
+
+</script>

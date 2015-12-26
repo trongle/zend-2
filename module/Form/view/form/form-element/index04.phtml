@@ -1,0 +1,40 @@
+<?php 
+
+// echo "<pre style='font-weight:bold'>";
+// print_r($this->form);
+// echo "</pre>";
+
+//create form
+
+
+
+	echo $this->form()->openTag($this->form);
+//formRow: FormLabel +FormInput + FormError
+//FormText: FormInput 
+	echo $this->formRow($this->form->get("my-textbox"))."<br />";
+	echo $this->formText($this->form->get("my-textbox"))."<br />";
+
+	echo $this->formRow($this->form->get("my-number"))."<br />";
+	echo $this->formNumber($this->form->get("my-number"))."<br />";
+	echo $this->formRow($this->form->get("my-area"))."<br />";
+
+	echo $this->formRow($this->form->get("my-password"))."<br />";
+
+	echo $this->formRow($this->form->get("my-file"))."<br />";
+
+	echo $this->formRow($this->form->get("my-checkbox"))."<br />";
+
+	echo $this->formRow($this->form->get("my-multycheckbox"))."<br />";
+	echo $this->formMultiCheckbox($this->form->get("my-multycheckbox"))."<br />";
+
+	echo $this->formRow($this->form->get("my-button"))."<br />";
+	echo $this->formButton()->render($this->form->get("my-button"),"This is <button></button>")."<br />";
+	echo $this->formButton()->openTag($this->form->get("my-button"));
+	echo "<span>This is a shit</span>";
+	echo $this->formButton()->closeTag();
+
+	echo $this->formRow($this->form->get("my-submit"))."<br />";
+	
+	echo $this->form()->closeTag($this->form);
+
+?>

@@ -1,0 +1,20 @@
+<?php 
+
+// echo "<pre style='font-weight:bold'>";
+// print_r($this->form);
+// echo "</pre>";
+
+//create form
+	echo $this->form()->openTag($this->form);
+	echo $this->formRow($this->form->get("my-textbox"))."<br />";
+	echo $this->formRow($this->form->get("my-number"))."<br />";
+	echo $this->formRow($this->form->get("my-area"))."<br />";
+	echo $this->formRow($this->form->get("my-password"))."<br />";
+	echo $this->formRow($this->form->get("my-file"))."<br />";
+	echo $this->formRow($this->form->get("my-checkbox"))."<br />";
+	echo $this->formRow($this->form->get("my-multycheckbox"))."<br />";
+	echo $this->formRow($this->form->get("my-button"))."<br />";
+	echo $this->formRow($this->form->get("my-submit"))."<br />";
+	echo $this->form()->closeTag($this->form);
+
+?>

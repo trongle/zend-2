@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<?php
+
+use Zend\Escaper\Escaper;
+$input = <<<INPUT
+body {
+    background-image: url('http://example.com/foo.jpg?</style><script>alert(1)</script>');
+}
+INPUT;
+$escaper = new Escaper("utf-8");
+$output = $escaper->escapeCss($input);
+
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php header('Content-Type: application/xhtml+xml; charset=UTF-8'); ?>
+
+    <title>Unescaped CSS</title>
+    <meta charset="UTF-8"/>
+    <style>
+    <?php echo $output; ?>
+    </style>
+</head>
+<body>
+    <p>User controlled CSS needs to be properly escaped!</p>
+</body>
+</html>

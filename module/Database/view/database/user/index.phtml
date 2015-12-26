@@ -1,0 +1,71 @@
+<?php 
+$xhtml = "";
+if(!empty($this->items)){
+	foreach($this->items as $item){
+		$linkInfo   = $this->url("manageUser/action",array("action"=>"info","id"=>$item->id));
+		$linkDelete = $this->url("manageUser/action",array("action"=>"delete","id"=>$item->id));
+		$linkEdit   = $this->url("manageUser/action",array("action"=>"edit","id"=>$item->id));
+		
+		$avatar = (empty($item->avatar))? FILES_URL."user/no_avatar.png" : FILES_URL."user/".$item->avatar;
+		$xhtml .= sprintf('<tr>
+								<td>%s</td>
+								<td><img src="%s"></td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td><a class="label label-info" href="%s">Info</a>
+									<a class="label label-warning" href="%s">Edit</a>
+									<a id ="delete" class="label label-danger" href="%s">Delete</a>
+								</td>
+							</tr>',$item->id,$avatar,
+								   $item->name,$item->email,
+								   $item->fullname,date("d-m-Y",strtotime($item->created)),
+								   $linkInfo,$linkEdit,$linkDelete);
+	}
+}
+/*
+	Các router cần có
+	delete /database/user/delete/4
+	add    /database/user/add/4
+	edit   /database/user/edit/4
+	info   /database/user/info/4'
+	
+
+
+	paginator  /database/user/index
+	paginator  /database/user/index/page
+ */
+?> 
+<div class="my-content">
+	<a class="add-new" href="<?php echo $this->url('manageUser/action',array('action'=>'add')) ?>">Add new user</a>
+<!-- Flash message -->
+	<?php echo $this->flashMessenger()->render() ?>
+
+	<table class="table table-hover table-bordered">
+		<tbody>
+			<tr>
+				<th width="5%">#</th>
+				<th width="10%">Avatar</th>
+				<th>Username</th>
+				<th width="20%">Email</th>
+				<th>Fullname</th>
+				<th>Created</th>
+				<th width="15%">Action</th>
+			</tr>
+			<?php echo $xhtml ?>
+		</tbody>
+	</table>
+	<?php 
+		$realURL = $this->url("manageUser/paginator");
+		echo $this->paginationControl($this->paginator,"sliding","paginator.phtml",array("realURL"=>$realURL));
+	?>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#delete").click(function(){
+			return window.confirm("Bạn có muốn xóa dữ liệu này ?")
+		})
+	})
+</script>

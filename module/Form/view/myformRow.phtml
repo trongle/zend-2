@@ -1,0 +1,19 @@
+<?php 
+
+
+$label = $element->getLabel();
+$labelAttr = $element->getLabelAttributes();
+
+$inputValue = $element->getValue();
+$inputAttr  = $element->getAttributes();
+
+
+$arrLabelAttr = $this->joinKeyValue($labelAttr);
+$arrInputAttr = $this->joinKeyValue($inputAttr);
+
+?>
+
+<div>
+	<label <?php echo $arrLabelAttr ?> ><?php echo $label ?></label>
+	<input <?php echo $arrInputAttr ?> />
+</div>

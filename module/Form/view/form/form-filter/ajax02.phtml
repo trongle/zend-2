@@ -1,0 +1,51 @@
+<?php 
+	$elementType   = $myForm->get("my-type");
+	$elementCourse = $myForm->get("my-course");
+	$elementSubmit = $myForm->get("my-button-submit");
+	$url = $this->url("treeRouterForm/manager_user",array(
+	"controller" => "form-filter",
+	"action"     => "ajax-data-02"
+));
+?>
+
+
+
+<div class="ajax-tut">
+<?php 
+	echo $this->form()->openTag($myForm);
+
+	echo "<p>".$this->formLabel($elementType)."</p>";
+	echo "<p>".$this->formElement($elementType)."</p>";
+
+	echo "<p>".$this->formLabel($elementCourse)."</p>";
+	echo "<p>".$this->formElement($elementCourse)."</p>";
+
+	echo "<p>".$this->formButton($elementSubmit)."</p>";
+
+	echo $this->form()->closeTag();
+?>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var def = $("select[name='my-type'] > option:selected").val();
+		loadContent(def);
+
+		$("#my-type").change(function(){
+			var type = $(this).val();
+			loadContent(type);
+		})		
+	})
+
+	function loadContent(realType){
+		$.ajax({
+				url  : "<?php echo $url ?>",
+				type : "GET", 
+				data : { type : realType},
+				success : function(data){
+					$("#my-course").html(data);
+
+				},
+		})
+	}
+</script>

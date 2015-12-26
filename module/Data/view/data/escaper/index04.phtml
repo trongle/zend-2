@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<?php
+
+use Zend\Escaper\Escaper;
+$input = <<<INPUT
+' onmouseover='alert(/ZF2!/);
+INPUT;
+/**
+ * NOTE: This is equivalent to using htmlspecialchars($input, ENT_COMPAT)
+ */
+//$output = htmlspecialchars($input);
+$escaper = new Escaper("utf-8");
+$output = $escaper->escapeHtmlAttr($input);
+?>
+<html>
+<head>
+    <?php header('Content-Type: text/html; charset=UTF-8'); ?>
+    <title>Single Quoted Attribute</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <div>
+        <?php
+        // the span tag will look like:
+        // <span title='' onmouseover='alert(/ZF2!/);'>
+        ?>
+        <span title='<?php echo $output ?>'>
+            What framework are you using?
+        </span>
+    </div>
+</body>
+</html>

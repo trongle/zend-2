@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zend-config>
+    <prodution>
+        <website>zing.vn</website>
+        <account>
+            <name>trongle</name>
+            <email>trongle@gmail.com</email>
+        </account>
+    </prodution>
+</zend-config>

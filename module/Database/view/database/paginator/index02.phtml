@@ -1,0 +1,27 @@
+<?php
+// echo "<pre style='font-weight:bold'>";
+// print_r($this->paginator);
+// echo "</pre>";
+$xhtml = "";
+	if(!empty($this->paginator)){
+		foreach($this->paginator as $item){
+			$xhtml .= sprintf('<tr><td>%s</td><td>%s</td></tr>',$item->id,$item->name);
+		}
+	}
+?>
+
+
+
+<table class = "table table-hover table-bordered">
+	<tbody>
+		<tr>
+			<th>ID</th>
+			<th>Username</th>
+		</tr>
+		<?php echo $xhtml ?>
+	</tbody>
+</table>
+<?php 
+	$realURL = $this->url("databaseRoute/paginator"); 
+	echo $this->paginationControl($this->paginator,"sliding","paginator.phtml",array("realURL"=>$realURL));
+?>

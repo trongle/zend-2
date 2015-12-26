@@ -1,0 +1,13 @@
+<?php 
+ 	$name = $this->escapeHtml($name);
+ 	$description = $this->escapeHtml($description);
+ 	$style = '';
+ 	foreach($attrs as $key => $val){
+ 		$style .= $this->escapeHtml($key).":".$this->escapeHtml($val).";";
+ 	}
+
+ 	echo $xhtml = '<h3 style="'.$style.'">'.$name.'</h3>
+		      <p>'.$description.'</p>';
+?>
+
+	

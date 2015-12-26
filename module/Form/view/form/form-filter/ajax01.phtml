@@ -1,0 +1,60 @@
+<?php 
+$url = $this->url("treeRouterForm/manager_user",array(
+	"controller" => "form-filter",
+	"action"     => "ajax-data-01"
+));
+?>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var hash = window.location.hash.slice(1);
+	 	var realType = ($.inArray(hash, ["php","jquery","zend"]) > -1 )? hash : "php";
+		loadContent(realType);
+
+		$(".nav a").click(function(){
+			var type = $(this).data("content");
+			loadContent(type);
+		})
+	})
+
+	function loadContent(realType){
+		$.ajax({
+				url  : "<?php echo $url ?>",
+				type : "GET", 
+				data : { type : realType},
+				success : function(data){
+					$("div.tab-content").text(data);
+				},
+				complete : function(){
+					$(".nav li").removeClass("active");
+					$("a[data-content="+ realType +"]").parent("li").addClass("active");
+				    window.location.hash = realType;
+				}
+		})
+	}
+
+</script>
+
+<div class="ajax-tut">
+	<ul class="nav nav-tabs">
+		<li>
+			<a data-content="php" href="#"  >Php</a>
+		</li>
+		<li>
+			<a data-content="zend" href="#" >Zend</a>
+		</li>
+		<li>
+			<a data-content="jquery" href="#" >Jquery</a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		
+	</div>
+</div>	
+
+<!-- List to do 
+  // tab mac dinh-load content tab do
+  // click-giu tab do khi refresh
+  //data :php-zend-jquery 
+
+-->

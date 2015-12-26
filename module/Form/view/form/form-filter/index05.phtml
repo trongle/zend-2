@@ -1,0 +1,10 @@
+<?php 
+	$elementVideo = new \ZendVN\Form\Element\Video();
+	$elementVideo->setAttributes(array(
+		"width"=>1200,
+		"height"=> 800,
+		"src" => FILES_URL."video/isomnia.mp4",
+		"type"=>"video/mp4"
+	));
+	echo $this->formVideo($elementVideo);
+?>

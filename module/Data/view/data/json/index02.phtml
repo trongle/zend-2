@@ -1,0 +1,21 @@
+<?php
+
+$xml = '<?xml version="1.0" encoding="UTF-8"?>
+		<zend_config>
+			<website>www.zend.vn</website>
+			<acount>
+				<name>Trongle</name>
+				<age>23</age>
+				<email>trongle@gmail.com</email>
+				<port>6969</port>
+			</acount>
+		</zend_config>';
+
+$json = \Zend\Json\Json::fromXml($xml);
+
+?>
+
+<script type="text/javascript">
+	var obj = JSON.parse('<?php echo $json ?>');
+	console.log(obj);
+</script>

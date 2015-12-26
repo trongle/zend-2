@@ -1,0 +1,17 @@
+<?php 
+
+// echo "<pre style='font-weight:bold'>";
+// print_r($this->form);
+// echo "</pre>";
+
+//create form
+	echo $this->form()->openTag($this->form);
+
+	echo $this->formRow($this->form->get("my-submit"))."<br />";
+	echo $this->formRow($this->form->get("my-hidden"))."<br />";
+	echo $this->formRow($this->form->get("my-radio"))."<br />";
+	echo $this->formRow($this->form->get("my-select"))."<br />";
+	
+	echo $this->form()->closeTag($this->form);
+
+?>

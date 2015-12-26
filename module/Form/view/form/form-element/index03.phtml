@@ -1,0 +1,19 @@
+<?php 
+
+// echo "<pre style='font-weight:bold'>";
+// print_r($this->form);
+// echo "</pre>";
+
+//create form
+	echo $this->form()->openTag($this->form);
+
+	echo $this->formRow($this->form->get("my-number"))."<br />";
+	echo $this->formRow($this->form->get("my-color"))."<br />";
+	echo $this->formRow($this->form->get("my-date"))."<br />";
+	echo $this->formRow($this->form->get("my-email"))."<br />";
+	echo $this->formRow($this->form->get("my-range"))."<br />";
+	echo $this->formRow($this->form->get("my-submit"))."<br />";
+	
+	echo $this->form()->closeTag($this->form);
+
+?>

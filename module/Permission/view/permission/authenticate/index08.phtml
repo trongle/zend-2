@@ -1,0 +1,10 @@
+<?php 
+	if(!$this->identity()){
+			echo "<h3 style='color:red;font-weight:bold'>Đăng nhập thất bại</h3>";
+		}else{
+			echo "<h3 style='color:red;font-weight:bold'>Đăng nhập thành công</h3>";
+			echo "<pre style='font-weight:bold'>";
+			print_r($this->identity());
+			echo "</pre>";
+		}
+?>

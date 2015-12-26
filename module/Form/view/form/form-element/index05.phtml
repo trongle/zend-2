@@ -1,0 +1,38 @@
+<?php 
+
+// echo "<pre style='font-weight:bold'>";
+// print_r($this->form);
+// echo "</pre>";
+
+//create form
+
+
+
+	echo $this->form()->openTag($this->form);
+//formRow: FormLabel +FormInput + FormError
+//FormText: FormInput 
+//formElement: formText form Password FormX 
+//formInput : <input type="*"
+//formLabel : <label>
+echo $this->formElement($this->form->get("my-textbox"))."<br />";
+echo $this->formElement($this->form->get("my-submit"))."<br />";
+echo $this->formInput($this->form->get("my-submit"))."<br />";
+
+
+echo $this->formLabel($this->form->get("my-textbox"),$this->formInput($this->form->get("my-textbox")),"prepend")."<br />";
+echo $this->formLabel()->openTag($this->form->get("my-textbox"));
+	echo "<h3>label</h3>";
+echo $this->formLabel()->closeTag()."<br />";
+
+
+	echo $this->formRow($this->form->get("my-textbox"))."<br />";
+
+	echo $this->formRow($this->form->get("my-number"))."<br />";
+
+	echo $this->formRow($this->form->get("my-password"))."<br />";
+
+	echo $this->formRow($this->form->get("my-submit"))."<br />";
+	
+	echo $this->form()->closeTag($this->form);
+
+?>

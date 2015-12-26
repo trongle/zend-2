@@ -1,0 +1,17 @@
+<?php 
+	$class 	= "";
+	if($this->error != null) $class ='has-feedback has-error';
+ 	echo $xhtml = '<div class="form-group '.$class.'">
+ 						'.$this->label.'
+						<div class="'. $this->class .'">
+							'.$this->input.
+							  $this->error.'
+						</div>
+ 					</div>';
+
+?>
+
+	
+		
+
+					

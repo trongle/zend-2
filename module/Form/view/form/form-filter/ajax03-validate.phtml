@@ -1,0 +1,92 @@
+<?php 
+	$myForm->setAttribute("action",$this->url("treeRouterForm/manager_user",array(
+		"controller" => "form-filter",
+		"action"     => "do-validate"
+	)));
+	$myForm->prepare();
+	$elementEmail    = $myForm->get("my-email");
+	$elementPassword = $myForm->get("my-password");
+	$elementCheckbox = $myForm->get("my-checkbox");
+	$btnSubmit       = $this->formElement($myForm->get("my-button-submit"));
+	$btnReset        = $this->formElement($myForm->get("my-button-reset"));
+
+	$checkbox   = $this->formLabel($elementCheckbox,$this->formElement($myForm->get("my-checkbox")),"append");
+
+	$frame_form = array(
+		array(
+			"label" => $this->formLabel($elementEmail),
+			"input" => $this->formElement($elementEmail),
+			"class" => "col-sm-9",
+			"error" => $this->formElementError($elementEmail)
+		),
+		array(
+			"label" => $this->formLabel($elementPassword),
+			"input" => $this->formElement($elementPassword),
+			"class" => "col-sm-9",
+			"error" => $this->formElementError($elementPassword)
+		),
+		array(
+			"label" => null,
+			"input" => '<div class="checkbox">'.$checkbox.'</div>',
+			"class" => "col-sm-offset-3 col-sm-9",
+		),
+		array(
+			"label" => null,
+			"input" => $btnSubmit ." ". $btnReset,
+			"class" => "col-sm-offset-3 col-sm-9",
+		),
+	);
+?>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-lock"></span>Login
+			</div>
+			<div class="panel-body">
+			<div id="ajax-info"></div>
+				<?php 
+					echo $this->form()->openTag($myForm);
+						echo $this->partialLoop("form-group.phtml",$frame_form);
+					echo $this->form()->closeTag();
+				?>			
+			</div>
+			<div class="panel-footer">
+				Not Registred? <a href="http://www.jquery2dotnet.com">Register here</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	$(document).ready(function() { 
+	    var options = { 
+	        target:        '#ajax-info',
+	        dataType : "json",
+	        success : showReponse,
+	    }; 
+	 
+	    // bind to the form's submit event 
+	    $('#login-form').submit(function() { 
+	        $(this).ajaxSubmit(options); 
+	        return false; 
+    	}); 
+	}); 
+
+	function showReponse(data){
+		if(data.status === "success"){
+			$("#ajax-info").html("Wellcome !").removeClass().addClass("content-success");
+		}else if(data.status === "error"){
+			var xhtml = "";
+			$.each(data.message,function(index,value){
+				if(value.length < 10 ){
+					xhtml += "";
+				}else{
+					xhtml += value + "<br />";
+				}	
+			})
+			$("#ajax-info").html(xhtml).removeClass().addClass("content-error");
+		}
+	}
+</script>	

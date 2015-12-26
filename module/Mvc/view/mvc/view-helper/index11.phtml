@@ -1,0 +1,9 @@
+<?php echo "<h3 style='color:red;font-weight:bold'>".__METHOD__."</h3>";
+// UL
+echo $this->htmlList($data);
+//OL
+echo $this->htmlList($data,true);
+//ATTRS
+echo $this->htmlList($data,false,array("style"=>"color:green"));
+
+
